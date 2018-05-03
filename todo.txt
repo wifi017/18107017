@@ -1,0 +1,26 @@
+Webapplikationen mit JS und HTML
+- mehr Praxis
+- responsive (CSS!)
+- Kommunikation Client/Server (XHR/AJAX)
+- JSON
+- NodeJS
+- Animation
+- Collision
+- Barrierefreiheit
+- verschiedene Frameworks, wozu?
+- AngularJS
+- PhoneGap / Cordova
+- reale Beispiele
+- GoogleMap API
+- SVG
+
+
+- Canvas
+- setTimeout, setInterval, requestAnimationFrame
+- asynchron, Callback-Funktionen
+- CSS
+- OpenData
+- TDD
+- ES6, Promises
+- Websockets
+- OOP
