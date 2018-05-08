@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script>
+// OOP
+var Timer = function( start ) { // Konstruktor-Funktion
+	this.count = start;
+	this.max = this.count;
+	this.node = this.build();
+	this.ctx = this.node.getContext('2d');
+	this.speed = 1000;
+}
+Timer.prototype.build = function() { // erzeugt Canvas
+	return $( '<canvas>' ).attr({width:100,height:100}).get(0);
+}
+Timer.prototype.start = function() { // zählt runter
+	this.draw();
+	this.count--;
+	if ( this.count < 0 ) return; // Bei 0 ist Schluss!
+	setTimeout( this.start.bind(this), this.speed )
+}
+Timer.prototype.draw = function() { // zeichnet Inhalt im Canvas
+	var c = this.ctx, x, alpha;
+	c.clearRect( 0,0, 100, 100);
+
+	// dünner grauer Kreis
+	c.lineWidth = 1;
+	c.strokeStyle = '#ccc';
+	c.beginPath();
+	c.arc( 50, 50, 40, 0, 2*Math.PI );
+	c.stroke();
+
+	//dicker Kreis
+	c.lineWidth = 4;
+	c.strokeStyle = '#000';
+	c.beginPath();
+	alpha = (2*Math.PI / this.max) * (this.max - this.count) - 0.5*Math.PI;
+	c.arc( 50, 50, 40, alpha, 1.5*Math.PI );
+	c.stroke();
+
+	// gefüllte Kreisecke
+	c.beginPath();
+	c.fillStyle = '#eee';
+	c.moveTo( 50, 50 );
+	c.arc( 50, 50, 40, alpha, 1.5*Math.PI );
+	c.lineTo( 50, 50);
+	c.fill();
+
+	//Text
+	c.font = '26px Arial';
+	c.fillStyle = '#000';
+	c.textAlign = 'center';
+	c.textBaseline = 'middle';
+	c.fillText( this.count, 50 , 52);
+}
+
+$( document ).ready( function() {
+
+	var timer = new Timer( 50 );
+	timer.speed = 100;
+	$( timer.node ).appendTo( '#ausgabe' );
+	timer.start();
+
+});
+
+	</script>
+	<style>
+	</style>
+</head>
+<body>
+	<div id="ausgabe"></div>
+</body>
+</html>

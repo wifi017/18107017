@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script>
+var drawCheckbox = function( ctx, checked ) {
+	ctx.clearRect(0,0,40,40);
+	ctx.strokeStyle = '#000';
+	ctx.lineWidth = 1;
+	ctx.strokeRect(2,2,36,36);
+	if ( checked ) {
+		ctx.strokeStyle = '#0C0';
+		ctx.lineWidth = 5;
+		ctx.beginPath();
+		ctx.moveTo( 8, 19 );
+		ctx.lineTo( 18, 29);
+		ctx.lineTo( 33, 9);
+		ctx.stroke();
+	}
+}
+$( document ).ready( function() {
+	// alle Checkboxen suchen
+	// im DOM Checkbox mit Canvas "ersetzen"
+	// Canvas mit Funktion wie Checkbox
+
+	// Selektiere alle Checkboxen und mache mit jeder einzeln...
+	$( 'input[type=checkbox]' ).each( function() {
+
+
+		var ctx = $( '<canvas>' ) // erzeuge einen neuen Canvas
+			.attr({width:40,height:40}) // definiere Größe
+			.data('checked',false) // setze einen Wert (am DOM Elem)
+			.insertAfter( this ) // füge das Element nach der Checkbox ein
+			.on( 'click', function() { // Eventlistener Click am Canvas
+				var checked = !$(this).data('checked'); // Boolean Wert umdrehen und merken
+				$(this).data('checked', checked); // Wert wieder Canvas zuweisen
+				drawCheckbox( ctx, checked ); // zeichne Checkbox im Canvas
+			})
+			.get(0).getContext('2d'); // hol Context von neu erstelltem Canvas
+
+		drawCheckbox( ctx, false ); // zeichne Canvas nach dem Erstellen (nicht gecheckt)
+		$( this ).hide(); // verstecke Checkbox
+
+
+	});
+
+
+
+
+});
+	</script>
+	<style>
+	body { font:20px Arial; }
+	canvas { vertical-align:middle; margin:0 5px 7px 0;}
+
+	</style>
+</head>
+<body>
+	<input type="checkbox" name="agb">Datenschutz alles gut.<br>
+	<input type="checkbox" name="newsletter">Ich will jeden Tag Newsletter.<br>
+	<input type="checkbox" name="marketing">Noch mehr Marketingzeug akzeptieren.<br>
+</body>
+</html>

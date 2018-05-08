@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script>
+var Person = function( name ) {
+	this.name = name;
+}
+
+$( document ).on( 'click', 'button', function() {
+	/*
+	var person = {};
+	person.name = $( '#namePerson' ).val();
+	*/
+	var person = new Person( $( '#namePerson' ).val() );
+});
+	</script>
+	<style>
+	</style>
+</head>
+<body>
+	<input type="text" id="namePerson"><button>Fertig</button>
+</body>
+</html>

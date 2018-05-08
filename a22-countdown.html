@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+	<title>Countdown</title>
+	<meta charset="utf-8">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script>
+$( document ).ready( function() {
+	// zähle runter
+
+	// setTimeout
+	var countdown = function( x, cb ) {
+		$( '#c1' ).html( x );
+		if ( x == 0 ) {
+			cb();
+			return;
+		}
+		setTimeout( function() {
+			countdown( --x, cb );
+		},1000);
+	}
+	countdown(10, function(){ $('#c1').css({color:'red'}); });
+
+	//ctx.fillText('Hallo',5,6);
+
+	// setInterval
+	var y = 10;
+	var int = setInterval( function() {
+		$( '#c2' ).html( --y );
+		if ( y == 0 ) {
+			clearInterval( int );
+			$('#c2').css({color:'red'});
+		}
+	}, 1000);
+
+	// requestAnimationFrame
+	var countdownRAF = function( z, start ) {
+		$( '#c3' ).html( z );
+		if ( z == 0 ) return;
+		requestAnimationFrame( function() {
+			if ( Date.now() - start >= 1000 ) {
+				z--;
+				start = Date.now();
+			}
+			countdownRAF( z, start );
+		});
+	}
+	countdownRAF( 10 , Date.now() );
+
+});
+	</script>
+	<style>
+span { display:inline-block; font-size:100px; padding:20px; }
+	</style>
+</head>
+<body>
+	<span id="c1">5</span>
+	<span id="c2">5</span>
+	<span id="c3">5</span>
+</body>
+</html>
