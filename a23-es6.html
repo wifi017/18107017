@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script>
+"use strict";
+var f = function() {
+	let x;
+	for ( let	x = 1; x <= 3;  x++) {
+
+		console.log( x );
+	}
+	/*z = 6;*/
+	console.log( x, y, window.x, z );
+}
+var x = 5, y = 6;
+const z = 10;
+f();
+
+// Arrow Funktion
+var quadrat = function( a ) {
+	return a*a;
+}
+var q = (a,b) => a*b;
+
+console.log( quadrat(5), q(6,4) );
+
+var f2 = function( c, callback ) {
+	var umfang = 2 * c * Math.PI;
+	callback( umfang );
+}
+f2( 10, u => console.log( u ) );
+
+//Callback-Funktion
+
+
+//Methode
+var o = {
+	m:function() {}
+}
+o.m();
+//Closure
+var multiply = function(a) {
+	return function(b) { return a * b; }
+}
+
+var m5 = multiply( 5 );
+var m6 = multiply( 6 );
+console.log( m5( 10 ), m5( 5 ), m6( 2 ), m6( 4 )  );
+
+//Konstruktor-Funktion
+var K = function() {
+	this.x = 1;
+}
+var k = new K();
+
+//IIFE
+(function() {
+	var s = 'huhu';
+ 	alert( s );
+}());
+
+
+//rekursive Funktion
+var f4 = function() {
+	f4(); // attention endless recursion!!!
+}
+
+// OOP mit ES5
+console.log( '--- OOP mit ES5 ---' );
+var Tier = function( anzahlBeine ) {
+	this.beine = anzahlBeine;
+	this.entferneBein = function() {
+		this.beine--;
+	}
+	this.toString = function() {
+		return 'Tier mit '+this.beine+' Beinen.';
+	}
+}
+Tier.prototype.beinDazu = function() {
+	this.beine++;
+}
+var dumbo = new Tier( 4 );
+console.log( dumbo );
+dumbo.entferneBein();
+dumbo.beinDazu();
+console.log( dumbo.beine, dumbo.toString() );
+
+alert( dumbo );
+
+
+// OOP mit ES6
+console.log( '--- OOP mit ES6 ---' );
+class Auto {
+	constructor( anzahlReifen ) {
+		this.reifen = anzahlReifen;
+		this.toString = function() {
+			return 'Auto mit '+this.reifen+' Reifen.';
+		}
+	}
+	nagel() {
+		this.reifen--;
+	}
+}
+
+
+var brumm = new Auto(4);
+brumm.nagel();
+alert( brumm );
+
+class LKW extends Auto {
+	constructor() {
+		super(6);
+		this.toString = function() {
+			return 'LKW hat viele Reifen';
+		}
+	}
+}
+
+var truck = new LKW();
+alert( truck );
+
+var O = function() {
+	this.x = 1;
+	this.y = 2;
+}
+
+var o = new O();
+console.log( o );
+
+
+	</script>
+	<style>
+	</style>
+</head>
+<body>
+
+</body>
+</html>

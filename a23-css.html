@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script>
+//$( document ).ready( function() {
+//$( '#x' ).on( 'click', function() {
+
+$( document ).on( 'click', '#x', function() {
+	$(this).css({left:200});
+	//$(this).css({animation:'bewegdasDing infinite forwards 2s linear'});
+
+	/*$( this ).animate({left:200},2000, function() { $(this).css({left:0})});*/
+
+});
+
+
+//})
+	</script>
+	<style>
+#x {
+	border:1px solid red;
+	padding:10px;
+	position:absolute;
+	top:0px;
+	left:0px;
+	opacity:1;
+
+	transition:all 2s linear;
+
+/*	position:absolute;  /* shrink to fit */
+	/* display:inline-block; */
+	/*	float:left; */
+}
+
+@keyframes bewegdasDing {
+	0% { left:0; }
+	100% { left:200px; }
+}
+@-webkit-keyframes bewegdasDing {
+	0% { left:0; }
+	100% { left:200px; }
+}
+/*
+#wrapper {  background:#ddd; width:200px; margin:0 auto;
+		/ *position:relative;* /
+		height:1000px;
+ }*/
+	</style>
+</head>
+<body>
+
+	<div id="wrapper">
+
+	<!-- 	Zeile1 -->
+		<div id="x">Hallo Welt</div>
+	<!--	Zeile3 -->
+
+	</div>
+</body>
+</html>
