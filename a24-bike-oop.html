@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script src="a23-bike.svgcode.js"></script>
+	<script>
+class Bike {
+	constructor( farbe ) {
+		this.farbe = farbe || '#000'; // Default #000
+		this.node = $( svgCode );
+		this.node.find('path').css({fill:this.farbe});
+		this.createBahn();
+		this.left = 0;
+		this.speed = (Math.floor( Math.random() * 50 ) + 1)/5;
+	}
+	createBahn() {
+		$( '<div class="bahn">' ).appendTo( 'body' ).append( this.node );
+	}
+	fahren( cb ) {
+		this.left+=this.speed;
+		this.node.css({left:this.left});
+
+		if ( this.left < this.node.parent().width()-75 ) {
+			setTimeout( this.fahren.bind(this, cb), 40 );
+		} else {
+			cb(  );
+			this.node.css({left:this.node.parent().width()-75});
+		}
+	}
+	printRanking( i ) {
+		this.node.parent().append(
+			$( '<span>' ).html( i )
+		);
+	}
+}
+/* ------------------------------  */
+var alleF = [];
+var ranking = 0;
+$( document ).on( 'click', '#btn', function() {
+	alleF.push( new Bike( $('#farbe').val() ) );
+});
+$( document ).on( 'click', '#start', function() {
+	for ( let i in alleF ) {
+	//for( var i = 0; i<alleF.length; i++ ) {
+	//	( function(i) {
+
+		alleF[i].fahren( function() {
+			ranking++;
+			alleF[i].printRanking( ranking );
+		} );
+
+
+	//	}(i));
+	}
+});
+
+
+	</script>
+	<style>
+	.bahn { border:1px solid #000; border-width:1px 0; position:relative; margin-bottom:-1px; height:50px; }
+	.bahn::before { content:''; display:block; border-right:1px solid #ccc; height:50px;  width:52px; }
+	.bahn::after { content:''; display:block; border-left:1px dotted #c00; height:50px;  width:25px; position:absolute; right:0; top:0; }
+	svg { width:50px; height:50px; position:absolute; left:0; top:0; }
+	span { position:absolute; top:10px; right:5px; font-size:1.5em; }
+	/*svg path:hover { fill:black; transition:all 1s; }*/
+	</style>
+</head>
+<body>
+	<h1>Fahrradrennen</h1>
+	<!-- <img src="images/bicycle.svg"> -->
+	<input type="color" id="farbe"><button id="btn">Fahrrad hinzufügen</button><button id="start">Starte das Rennen</button>
+
+</body>
+</html>

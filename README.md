@@ -18,8 +18,24 @@ Beispiele/Übungen
 - Countdown
 
 ### Abend 23 (15.05.2018, C513)
+- HTML/CSS
+  * Positionieren
+  * SVG
+- Funktionalität
+  * Closure-Funktionen
+  * ES6: let, const, Arrow-Funktionen, class
+- Wiederholung
+  * OOP
+
+Beispiele/Übungen
+- Fahrrad
+
+### Abend 24 (17.05.2018, C513)
+- Wiederholung
+  * OOP
 - API/Framework
   * Googemap Javascript API
 
 Beispiele/Übungen
+- Fahrrad (fertig)
 - GMAP Marker Applikation

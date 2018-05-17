@@ -1,0 +1,22 @@
+2. Übung (Abgabe 21.6., Nachricht an Adrian in Lernplattform)
+
+Objektorientiertes Programmieren (OOP)
+
+Erstellen Sie eine Klasse mit der Vielecke erzeugt werden können.
+
+Beim Erstellen wählt man im UI zuerst die Anzahl der Ecken aus:
+3 od. 4 (Zusatzaufgabe 5)
+
+Es müssen die einzelnen Eckpunkte P1, P2, P3 usw.jeweils mit x- und y-Koordinate angegeben werden. Eingabe überprüfen (nur gültige Werte erlauben 0-500px).
+
+Die Klasse bietet Möglichkeiten:
+- Berechnung der Seitenlänge (+Umfang)
+- Berechnung der Fläche
+zB: https://de.wikipedia.org/wiki/Dreieck
+
+Die erzeugten Objekte werden in einem Canvas 500x500 ausgegeben.
+(Methode der Klasse zur optischen Darstellung des Objektes)
+
+Jedes Objekt hat eine laufende Nummer, die in der Darstellung mit berücksichtigt wird.
+
+Unterhalb des Canvas werden Objekte in einer Liste (Tabelle) ausgegeben, Spalten für Umfang und Fläche. Jedes Objekt kann über einen Link "Löschen" wieder entfernt werden.

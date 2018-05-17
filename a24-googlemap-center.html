@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script async src="https://maps.googleapis.com/maps/api/js?callback=machKarte"></script>
+	<script>
+var meineMap;
+var machKarte = function() {
+	var kartenoptionen = {
+		center:{ lat:48.1, lng:16.45 },
+		zoom:8
+	}
+	meineMap = new google.maps.Map( $('#karte').get(0), kartenoptionen );
+}
+var alleMarker = [];
+var machMarker = function( position ) {
+	return new google.maps.Marker({
+		position:position,
+		map:meineMap
+	})
+}
+$( document ).on('click','#save', function() {
+	var markerName = $('#mname').val();
+	var position = meineMap.getCenter();
+	alleMarker.push( machMarker( position ) );
+});
+	</script>
+	<style>
+#karte { border:1px solid #000; width:400px; height:300px; }
+	</style>
+</head>
+<body>
+<div id="karte"></div>
+<input type="text" id="mname" placeholder="wie heisst der Ort?">
+<button id="save">Speichern</button>
+</body>
+</html>
