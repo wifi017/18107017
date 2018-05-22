@@ -43,13 +43,11 @@ Beispiele/Übungen
 ### Abend 25 (22.05.2018, C513)
 - Wiederholung
   * Googemap Javascript API
-  * Canvas
   * localStorage
 - NodeJS
   * http (createServer)
-  * fs (readFile, writeFile)
-  * express + body_parser
+  * fs (readFile)
 
 Beispiele/Übungen
-- GMAP Marker Applikation (fertig)
+- GMAP Marker Applikation
 - simple Servertasks
