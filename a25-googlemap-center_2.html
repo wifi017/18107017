@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script async src="https://maps.googleapis.com/maps/api/js?callback=machKarte"></script>
+	<script>
+var meineMap;
+var alleOrte = [];
+var alleMarker = [];
+var ladeLokaleOrte = function() {
+	var orteLokalString = localStorage.getItem( 'orte' );
+	if ( orteLokalString ) {
+		var orteLokal = JSON.parse( orteLokalString );
+		alleOrte = orteLokal.all; // Array
+		for ( var i in alleOrte ) {
+			alleMarker.push(  machMarker(alleOrte[i].pos) );
+		}
+	}
+}
+var showAllMarkers = function() {
+
+	if ( alleMarker.length > 1 ) {
+		var bounds = new google.maps.LatLngBounds();
+		for (var i in alleMarker ) {
+		 	bounds.extend( alleMarker[i].position );
+		}
+		meineMap.fitBounds(bounds);
+	} else if ( alleMarker.length == 1 ) {
+		meineMap.setCenter( alleMarker[0].position );
+
+	}
+}
+
+var machKarte = function() {
+	var kartenoptionen = {
+		center:{ lat:48.1, lng:16.45 },
+		zoom:8
+	}
+	meineMap = new google.maps.Map( $('#karte').get(0), kartenoptionen );
+
+	ladeLokaleOrte(); // mach Marker aus localStorage
+	showAllMarkers(); // zeige Karte so, dass alle Marker sichtbar sind
+
+}
+var machMarker = function( position ) {
+	return new google.maps.Marker({
+		position:position,
+		map:meineMap
+	})
+}
+
+$( document ).on('click','#save', function() {
+	var markerName = $('#mname').val();
+	$('#mname').val('');
+	var position = meineMap.getCenter();
+	var neuerOrt = {
+		name:markerName,
+		pos:{lat:position.lat(), lng:position.lng()},
+	};
+	alleMarker.push(machMarker( position ));
+	alleOrte.push( neuerOrt );
+	localStorage.setItem( 'orte', JSON.stringify( {all:alleOrte} ) );
+});
+
+
+$( document ).on('click','#delete', function() {
+	localStorage.clear();
+	location.reload();
+});
+
+	</script>
+	<style>
+#karte { border:1px solid #000; width:400px; height:300px; }
+	</style>
+</head>
+<body>
+<div id="karte"></div>
+<input type="text" id="mname" placeholder="Wie heisst der Ort?">
+<button id="save">Speichern</button><button id="delete">Alle löschen</button>
+</body>
+</html>

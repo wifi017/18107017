@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script>
+
+var y = localStorage.getItem( 'x' ); // STRING
+console.log( 'localS', y)
+var o2 = JSON.parse( y );
+console.log( o2 );
+
+
+var o = {};
+o.x = 1;
+o.y = 'test';
+o.z = [];
+o.z[0] = 'A';
+o.z[1] = true;
+o.m = function() { alert('huhu'); }
+
+console.log( o );
+
+console.log( o.toString() );
+
+var stringEs = JSON.stringify( o );
+
+console.log( stringEs );
+localStorage.setItem( 'x', stringEs );
+	</script>
+	<style>
+	</style>
+</head>
+<body>
+
+</body>
+</html>

@@ -39,3 +39,17 @@ Beispiele/Übungen
 Beispiele/Übungen
 - Fahrrad (fertig)
 - GMAP Marker Applikation
+
+### Abend 25 (22.05.2018, C513)
+- Wiederholung
+  * Googemap Javascript API
+  * Canvas
+  * localStorage
+- NodeJS
+  * http (createServer)
+  * fs (readFile, writeFile)
+  * express + body_parser
+
+Beispiele/Übungen
+- GMAP Marker Applikation (fertig)
+- simple Servertasks
