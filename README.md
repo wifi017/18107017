@@ -51,3 +51,11 @@ Beispiele/Übungen
 Beispiele/Übungen
 - GMAP Marker Applikation
 - simple Servertasks
+
+### Abend 26 (24.05.2018, C513)
+- Wiederholung
+  * AJAX, XHR, JSON
+  * CORS
+- NodeJS
+  * express
+  * body-parser

@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="j"></script>
+	<script>
+$( document ).on( 'click', '#sendrequest', function(e) {
+	e.preventDefault();
+	var eingabe = $( '#radius' ).val() * 1;
+	$.ajax({
+		url:'http://localhost:3008/circle',
+		method:'POST',
+		contentType:'application/json', // REQ-Daten-Format JSON
+		data:JSON.stringify({radius:eingabe}), // stringify weil JSON
+		dataType:'json', // RESP-Format
+	  success:function( responseData ) {
+			$( '<hr>' ).appendTo( 'body' );
+			$( '<div>' ).appendTo( 'body' )
+				.append( $('<div>').html( 'Radius: '+eingabe ) )
+				.append( $('<div>').html( 'Umfang: '+ responseData.umfang ) )
+				.append( $('<div>').html( 'Fläche: '+ responseData.flaeche ) );
+		}
+	})
+});
+	</script>
+	<style>
+	* { font:1.5rem Arial; }
+	</style>
+</head>
+<body>
+	<h1>Kreis berechnen API</h1>
+	Radius: <input type="text" id="radius" autocomplete="off"><br>
+	<button id="sendrequest">Umfang und Fläche berechnen</button>
+</body>
+</html>

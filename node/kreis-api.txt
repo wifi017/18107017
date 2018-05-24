@@ -1,0 +1,20 @@
+Schnittstelle zum Kreisberechnen
+
+URL: http://localhost:3008/circle
+REQUEST-Methode: POST (od. GET)
+REQUEST-Daten-Format: JSON  (od. x-www-form-urlencoded wäre möglich)
+REQUEST-Daten:
+  radius: NUMBER
+
+RESPONE: Erfolg
+  RESPONSE-HTTP-Status: 200
+  RESPONSE-Format: JSON (od. TEXT, HTML, XML, JSONP)
+  RESPONS-Daten:
+  {
+    umfang: NUMBER,
+    flaeche: NUMBER
+  }
+
+RESPONS: Fehler
+  RESPONSE-HTTP-Status: 500
+  RESPONS-Daten: leer

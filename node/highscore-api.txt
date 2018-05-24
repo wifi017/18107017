@@ -1,0 +1,80 @@
+Highscore - API
+
+/**********************************************************
+Speichern
+**********************************************************/
+URL: http://localhost:3223/highscore
+REQUEST-Methode: POST
+REQUEST-Daten-Format: x-www-form-urlencoded
+REQUEST-Daten:
+  punkte: NUMBER
+  name: STRING
+
+RESPONE: Erfolg
+  RESPONSE-HTTP-Status: 200
+  RESPONSE-Format: JSON
+  RESPONS-Daten:
+  {
+    success: true
+  }
+
+RESPONS: Fehler
+  RESPONSE-HTTP-Status: 200
+  RESPONSE-Format: JSON
+  RESPONS-Daten:
+  {
+    success: false
+  }
+
+
+/**********************************************************
+Abrufen
+**********************************************************/
+URL: http://localhost:3223/highscore
+REQUEST-Methode: GET
+REQUEST-Daten-Format: x-www-form-urlencoded
+REQUEST-Daten:
+  amount: NUMBER || 0 = all
+
+RESPONE: Erfolg
+  RESPONSE-HTTP-Status: 200
+  RESPONSE-Format: JSON
+  RESPONS-Daten:
+  {
+    success: true,
+    data: [
+      {name:STRING, punkte:NUMBER},
+      ...
+    ]
+  }
+
+RESPONS: Fehler
+  RESPONSE-HTTP-Status: 200
+  RESPONSE-Format: JSON
+  RESPONS-Daten:
+  {
+    success: false
+  }
+
+
+/**********************************************************
+Löschen
+**********************************************************/
+URL: http://localhost:3223/highscore
+REQUEST-Methode: DELETE
+
+RESPONE: Erfolg
+  RESPONSE-HTTP-Status: 200
+  RESPONSE-Format: JSON
+  RESPONS-Daten:
+  {
+    success: true,
+  }
+
+RESPONS: Fehler
+  RESPONSE-HTTP-Status: 200
+  RESPONSE-Format: JSON
+  RESPONS-Daten:
+  {
+    success: false
+  }
