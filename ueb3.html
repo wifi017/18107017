@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script async src="https://maps.googleapis.com/maps/api/js?callback=mapCallback"></script>
+	<script>
+var karte;
+var mapCallback = function() {
+	var kartenoptionen = {
+		center:{lat:48.2,lng:16.3},
+		zoom:10
+	}
+	karte = new google.maps.Map( $('#meineKarte').get(0), kartenoptionen  );
+};
+
+var zeichneKreuz = function() {
+	var ctx = $( '#cross' ).get(0).getContext('2d');
+	ctx.moveTo(50,0);
+	ctx.lineTo(50,100);
+	ctx.moveTo(0,50);
+	ctx.lineTo(100,50);
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.arc(50,50,10,0,2*Math.PI);
+	ctx.stroke();
+}
+
+var nr = 0;
+$( document ).ready( function() {
+	zeichneKreuz();
+
+	$( 'button' ).on('click', function() {
+		nr++;
+		var mitte = karte.getCenter();
+		var m = new google.maps.Marker({
+			map:karte,
+			position:mitte,
+			label:nr.toString()
+		});
+		m.addListener( 'click', function() {
+			m.setMap( null );
+		});
+		$( '#ort' ).val('');
+	});
+});
+
+	</script>
+	<style>
+#wrap { position:relative; }
+#meineKarte { width:600px; height:400px; border:1px solid #000; }
+#cross { position:absolute; top:150px; left:250px; pointer-events:none; }
+
+	</style>
+</head>
+<body>
+<h1>Tour erstellen</h1>
+<div id="wrap">
+	<div id="meineKarte"></div>
+	<canvas width="100" height="100" id="cross"></canvas>
+</div>
+<input type="text" id="ort" placeholder="Wie heisst der Ort?"><button>Speichern</button>
+</body>
+</html>

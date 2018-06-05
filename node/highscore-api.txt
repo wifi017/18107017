@@ -42,7 +42,7 @@ RESPONE: Erfolg
   RESPONS-Daten:
   {
     success: true,
-    data: [
+    eintraege: [
       {name:STRING, punkte:NUMBER},
       ...
     ]

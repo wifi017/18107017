@@ -1,0 +1,9 @@
+Milo:
+  Restaurant Bestellaufnahme Applikation als
+  mobile APP mit Websockets
+  Sender + Empfänger
+  UI (Menü, Kategorien)
+  Einlesen der Menüdaten (Karte) vom Server (zB als CSV)
+  Offlinemodus (Verwendung im Zug, nicht immer INet)
+
+  

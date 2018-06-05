@@ -59,3 +59,24 @@ Beispiele/Übungen
 - NodeJS
   * express
   * body-parser
+
+### Abend 27 (29.05.2018, C514)
+- Wiederholung
+  * DOM Manipulation
+  * Array, Objekte
+  * AJAX, XHR, JSON
+  * CORS
+
+Beispiele/Übungen
+- Tetris Highscore
+
+### Abend 28 (05.06.2018, C513)
+- NodeJS
+  * Websockets mit socket.io
+
+Beispiele/Übungen
+- Chat
+
+### Abend 29 (07.06.2018, C513)
+Praxis + Beispiele
+- Arbeiten an Übungsaufgaben 

@@ -1,0 +1,22 @@
+3. Übung (Abgabe 21.6., Nachricht an Adrian in Lernplattform)
+
+Client/Server Kommunikation und NodeJS
+
+ueb3.html lädt eine GoogleMap in der Marker erstellt werden können.
+
+Ziel:
+A) Marker Verwaltung
+Die erstellten Marker werden als Liste unterhalb ausgegeben (Tabelle)
+Jeder Marker kann gelöscht werden, Reihenfolge (nach oben, nach unten) kann geändert werden (Beschriftung Marker beachten!)
+
+B) Pfad
+Die Tour (Marker) soll mittels Polylinie in der GoogleMap dargestellt werden.
+
+
+C) Speichern
+Die Daten einer Tour werden am Server (NodeJS mit Express) in ein JSON-File gespeichert (siehe Beispiel Highscore).
+Beim Aufrufen der Seite erscheint die Tour (Marker wieder).
+
+Zusatzfeature:
+Beim Aufrufen der Karte werden alle gespeicherten Touren als Auswahl (<select>) angezeigt und Benutzer kann eine Tour wählen. Diese wird mit dne Markern wieder angezeigt und kann verwaltet (Tabelle) werden.
+Marker/Punkte können in der Map verschoben/editiert werden.
