@@ -1,0 +1,9 @@
+1) neues GIT Repo
+2) sync Repo lokal
+3) Basisdateien PhoneGap (config.xml, www mit index.html, js und icon.png)
+4) PhoneGap Desktop existing Project anlegen
+4a) neue Ordner (plugins, platforms, hooks, etc.) wurden erstellt
+5) .gitignore anlegen und Folder (4a) ausschließen
+6) sync Repo
+7) Phonegap Build APP mit Repo(Github) erzeugen
+8) APK (Android) installieren

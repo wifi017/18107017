@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script>
+var showImage = function( filename ) {
+
+	$( '<span id="fadeIn">' ).css({'display':'none','background-image':'url(tirolbilder/'+filename+')'}).appendTo('#bilder').fadeIn( 1000, function() {
+		$( '#bilder' ).css({'background-image':'url(tirolbilder/'+filename+')'});
+		$( '#fadeIn' ).remove();
+	} );
+
+
+
+}
+
+var showNext = function() {
+	showImage( 'endlos-weite-schwuenge-ueber-perfekt-praeparierte-pisten-ziehen.jpg' );
+}
+
+var showPrev = function() {
+	showImage( 'das-paradies-fuer-wintersportler.jpg' );
+}
+
+$( document ).on( 'click', '#next', showNext );
+$( document ).on( 'click', '#prev', showPrev );
+	</script>
+	<style>
+#bilder, #fadeIn {
+	position:fixed;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	background:url( tirolbilder/das-paradies-fuer-wintersportler.jpg ) no-repeat center center;
+	background-size:cover;
+}
+
+#bilder div {
+	color:#fff;
+	background:rgba(0,0,0,0.3);
+	padding:10px;
+	font-size:5em;
+	font-weight:bold;
+	position:absolute;
+	top:calc(50% - 0.5em);
+	left:10px;
+	cursor:pointer;
+	z-index:2;
+}
+
+#bilder #next {
+	left:auto;
+	right:10px;
+}
+
+	</style>
+</head>
+<body>
+	<div id="bilder">
+		<div id="prev">&lt;</div>
+		<div id="next">&gt;</div>
+	</div>
+</body>
+</html>

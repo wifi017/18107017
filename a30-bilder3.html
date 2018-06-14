@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script>
+var bilder = [
+	'das-paradies-fuer-wintersportler.jpg',
+	'endlos-weite-schwuenge-ueber-perfekt-praeparierte-pisten-ziehen.jpg',
+	'erlebnishotel-fendels-familienhit.jpg',
+	'fruehlings-special-top-of-tyrol.jpg'
+];
+
+var aktuell = 0;
+
+
+var showImage = function( i ) {
+	aktuell += i;
+	if ( aktuell < 0 ) aktuell = bilder.length - 1; // wieder ans ende
+	if ( aktuell > bilder.length - 1 ) aktuell = 0; // wieder zum anfang
+	$( '#bilder' ).css({'background-image':'url(tirolbilder/'+bilder[aktuell]+')'});
+}
+
+var showNext = function() {	showImage( 1 ); }
+var showPrev = function() { showImage( -1 ); }
+$( document ).on( 'click', '#next', showNext );
+$( document ).on( 'click', '#prev', showPrev );
+$( document ).ready( function() {
+	showImage(0);
+});
+
+var downX = 0;
+$( document ).on( 'mousedown touchstart', '#bilder', function( event ) {
+	if ( event.originalEvent.touches ) {
+		downX = event.originalEvent.touches[0].clientX;
+	} else {
+		downX = event.originalEvent.clientX;
+	}
+});
+/*$( document ).on( 'mousemove touchmove', '#bilder', function( event ) {
+	if ( downX == 0 ) return;
+	if ( event.originalEvent.changedTouches ) {
+		var diffX = downX - event.changedTouches[0].clientX;
+	} else {
+		var diffX = downX - event.originalEvent.clientX;
+	}
+	if ( diffX < 0 ) $( '#bilder' ).css( { left: diffX });
+	if ( diffX > 0 ) $( '#bilder' ).css( { right: -diffX });
+});*/
+$( document ).on( 'mouseup touchend', '#bilder', function( event) {
+	try {
+		var diffX = downX - event.changedTouches[0].clientX;
+	} catch(e) {
+		var diffX = downX - event.originalEvent.clientX;
+	}
+	if ( diffX < -100 ) { showImage(1); }
+	if ( diffX > 100 ) { showImage(-1); }
+	downX = 0;
+	$( '#bilder' ).css( { left: 0, right: 0 });
+});
+
+
+
+</script>
+	<style>
+#bilder, #fadeIn {
+	position:fixed;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	background:no-repeat center center;
+	background-size:cover;
+}
+
+#bilder div {
+	display:none;
+	color:#fff;
+	background:rgba(0,0,0,0.3);
+	padding:10px;
+	font-size:5em;
+	font-weight:bold;
+	position:absolute;
+	top:calc(50% - 0.5em);
+	left:10px;
+	cursor:pointer;
+	z-index:2;
+}
+
+#bilder #next {
+	left:auto;
+	right:10px;
+}
+
+	</style>
+</head>
+<body>
+	<div id="bilder">
+		<div id="prev">&lt;</div>
+		<div id="next">&gt;</div>
+	</div>
+</body>
+</html>
