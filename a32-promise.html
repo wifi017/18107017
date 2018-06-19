@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script>
+var countdown = function( x, id, callback ) {
+	var count = function() {
+		$( '#'+id ).html( x-- );
+		if ( x >= 0 ) {
+			setTimeout( count, 500 );
+		} else {
+			callback();
+		}
+	}
+	count();
+}
+
+var countdownPromise = function( x, id ) {
+	return function() { // Closure
+		return new Promise( function( resolve, reject ) {
+			if ( x < 0 ) reject(); // Abbruch Promise
+			var count = function() {
+				$( '#'+id ).html( x-- );
+				if ( x >= 0 ) {
+					setTimeout( count, 500 );
+				} else {
+					resolve(); // erfolgreiches Ende vom Promise
+				}
+			}
+			count();
+		});
+	}
+}
+
+
+$( document ).ready( function() {
+	countdown(5,'c1',function(){
+		countdown(5,'c2',function(){
+			countdown(5,'c3',function(){
+				$( '#c1,#c2,#c3' ).css({color:'red'});
+			});
+		});
+ 	});
+
+	// 4-6
+	var p4 = countdownPromise($('#c4').html()*1,'c4');
+	var p5 = countdownPromise(4,'c5');
+	var p6 = countdownPromise(5,'c6');
+
+	p4().then( p5 ).then( p6 ).then( function() {
+		$( '#c4,#c5,#c6' ).css({color:'red'});
+	}).catch(
+		function() { alert( 'ERROR!!!' ); }
+	);
+
+
+});
+
+	</script>
+	<style>
+	</style>
+</head>
+<body>
+	<div id="c1">5</div>
+	<div id="c2">5</div>
+	<div id="c3">5</div>
+	<hr>
+	<div id="c4">10</div>
+	<div id="c5">4</div>
+	<div id="c6">5</div>
+</body>
+</html>

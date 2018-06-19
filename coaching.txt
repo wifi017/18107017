@@ -1,0 +1,37 @@
+Allgemeines zum Coaching
+1) Zum ersten Coachingtermin einen Projekt-Zeitplan mitbringen. Projektabschnitte/Milestones pro Woche/Coachingtermin
+2) Immer klare Fragestellungen für's Coaching vorbereiten, um die Zeit gut nutzen zu können
+3) per Mail den relevanten Code (mit gut nachvollziehbarer Beschreibung des Problems) immer klar auszeichnen (z.B. durch Kommentare, Angabe der line number im Mail)
+4) nicht auf den Abgabetermin der Pflichtübungen vergessen (übermorgen!) - die Beurteilung der Pflichtübungen wird in etwa 2 Wochen in Anspruch nehmen
+
+Termine
+Do 21.6. -> 1. Coaching
+Do 28.6. -> 2. Coaching
+Do  5.7. -> 3. Coaching
+Do 12.7. -> 4. Coaching
+Do 19.7. -> Präsentation/Prüfung
+
+Timeslots (Coaching dauert immer von 18:00 - 21:30)
+9 TN => ca 23min
+
+18:00 - 18:23 Laura
+18:23 - 18:46 Ulrike
+18:46 - 19:09 Simon
+19:09 - 19:32 Stefan Ne.
+19:32 - 19:55 Andreas
+
+20:05 - 20:28 Elvedin
+20:28 - 20:51 Stefan Na.
+20:51 - 21:14 Law
+21:14 - 21:37 Milo
+
+Projekte
+Laura: Vokabeltrainer App mit Tinder-Swipe
+Elvedin: Paletten-Verwaltung
+Simon: Ökosystem Meeresaquarium (Spiel)
+Milidrag: Zug-Restaurant Bestellaufnahme APP
+Przemyslaw: Buchungssystem für Außenwerbung
+Ulrike: jsTicketsystem
+Stefan Nawratil: MusikChat-Portal mit Themen-Räumen
+Stefan Nenodrovic: -
+Andreas: chatBot

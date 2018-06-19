@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script>
+
+	var app = angular.module( 'userApp', [] );
+	app.controller( 'userCtrl', function( $scope ) {
+		$scope.users = [];
+		$scope.sort = 'ASC';
+
+		$scope.addUser = function() {
+			$scope.users.push( {name:$scope.userName, checked:false} );
+			$scope.sortUsersArray();
+			$scope.userName = '';
+		}
+
+		$scope.howMuch = function() {
+			var anz = $scope.users.length;
+			return anz != 0 ? anz : 'keine'; //bedingte Zuweisung mit ternären Operator
+		}
+
+		$scope.deleteUsers = function() {
+			for ( let i = $scope.users.length-1; i>=0; i-- ) {
+				if ( $scope.users[i].checked ) {
+					$scope.users.splice(i,1);
+				}
+			}
+		}
+
+		$scope.sortUsers = function() {
+			$scope.sort = $scope.sort == 'ASC' ? 'DESC' : 'ASC';
+			$scope.sortUsersArray();
+		}
+
+		$scope.sortUsersArray = function() {
+			$scope.users.sort( function(a,b) {
+				if ( 	$scope.sort == 'DESC' ) return a.name.toLowerCase() < b.name.toLowerCase();
+				else return a.name.toLowerCase() > b.name.toLowerCase();
+			});
+		}
+
+	});
+
+	</script>
+	<style>
+		.sortASC::after { content:''; display:inline-block; width:0; height:0; border-style:solid; border-width:10px 5px 0 5px; border-color:transparent; border-top-color:#000; margin-left:10px;  }
+		.sortDESC::after { content:''; display:inline-block; width:0; height:0; border-style:solid; border-width:0px 5px 10px 5px; border-color:transparent; border-bottom-color:#000; margin-left:10px;  }
+	</style>
+</head>
+<body ng-app="userApp">
+	<div ng-controller="userCtrl">
+		<h2>Anzahl User: <span>{{howMuch()}}</span></h2>
+		<input type="text" ng-model="userName"><button ng-click="addUser()">Speichern</button>
+		<div ng-repeat="u in users">
+			<label><input type="checkbox" ng-model="u.checked">{{u.name}}</label>
+		</div>
+		<button ng-click="deleteUsers()" ng-if="users.length > 0">Lösche markierte Einträge</button><button ng-click="sortUsers()" class="sort{{sort}}"  ng-if="users.length > 1">Sortieren</button>
+	</div>
+</body>
+</html>
